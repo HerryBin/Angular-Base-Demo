@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="MyModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular.min.js"></script>
+    <script src="../js/directiveBind.js"></script>
+</head>
+<body>
+
+<div data-ng-controller="MathCtrl">
+    <my-add-things fn="add(x, y)"></my-add-things>
+</div>
+<div data-ng-controller="UserCtrl">
+    <my-user-directive user="loggedInUser"></my-user-directive>
+    {{loggedInUser.name}}
+</div>
+<div data-ng-controller="MyCtrl">
+    <drink flavor="{{parentFlavor}}"></drink>
+    <br><br><br><br><br><br>
+    //不要抽象一个控制器 让控制器去继承这个通用控制器 这是错误的<br>
+    //应该将公共的东西抽象成一个service<br>
+    directive 的工作就是把DOM 元素和 scope连接起来 让开发者在这里对 DOM 元素的行为进行操作。<br>
+    directive 其实是使用父级的 scope， 当我们想在 directive 创建或操作属性时候，其实是在 父级 scope 进行<br>
+    scope 设置成 true。 这样 directive 的行为就和 ng-controller 一样了， 他会创建一个全新的 子级 scope 继承自父级。<br>
+    这样你就可以访问父级 scope 的属性，也可以在自己的 scope中创建新属性。<br>
+
+
+    angular.module("MyModule") .directive("MyDirective", function() {
+    return {
+    scope: { property: "=", expression: "@" action: "&" },
+    link: function(scope, el) {
+    }
+    }
+    });
+</div>
+</body>
+</html>

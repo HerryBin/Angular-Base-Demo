@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src="../angular.min.js"></script>
+    <script type="text/javascript">
+        var myModule=angular.module('myModule',[]);
+
+        var myCtrl=function($scope){
+            $scope.name='testName';
+        };
+        myModule.controller('myCtrl',myCtrl);
+
+        //申明式注入
+        var myCtrl2=function(parameters){
+            parameters.name='test2Name';
+        };
+
+        myCtrl2.$inject=['$scope'];
+
+        myModule.controller('myCtrl2',myCtrl2);
+
+        //内敛式注入
+        myModule.controller('myCtrl3',['$scope',function($scope){
+            $scope.name='内敛式注入';
+        }]);
+
+    </script>
+</head>
+<body>
+<div data-ng-controller="myCtrl">
+{{name}}
+</div>
+<div data-ng-controller="myCtrl2">
+    {{name}}
+</div>
+<div data-ng-controller="myCtrl3">
+    {{name}}
+</div>
+</body>
+</html>

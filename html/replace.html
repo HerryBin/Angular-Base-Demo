@@ -1,0 +1,16 @@
+<!doctype html>
+<html ng-app="MyModule">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+将模版的内容追加到元素中，如果设置为 true，那么模版的内容将会替换元素的内容。
+//如果directive的名字是有大写字母的，就应该以用 - 符号分开，如果scope里面的属性名也有大小写，也应该以-分开
+<div data-ng-controller="fatherController">
+    <str-directive directisve-str="{{fatherName}}"></str-directive>
+</div>
+</body>
+<script src="../angular.js"></script>
+<script src="../js/replace.js"></script>
+</html>

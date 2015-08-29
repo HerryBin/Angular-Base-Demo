@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <title></title>
+    <script src="../angular.min.js"></script>
+    <script type="text/javascript">
+        var myModule = angular.module('myModule', []);
+        myModule.factory('game', function () {
+            return {
+                gameName: 'test Injector invoke factory'
+            }
+        });
+
+        myModule.controller('myCtrl', ['$scope', '$injector',
+            function ($scope, $injector) {
+
+                $injector.invoke(function (game) {
+                    console.log(game.gameName);
+                })
+
+                console.log($scope);
+                console.log($injector);
+            }]);
+    </script>
+</head>
+<body>
+<div data-ng-controller="myCtrl">
+
+</div>
+</body>
+</html>
