@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义验证</title>
+    <script src="jquery-1.11.1.js"></script>
+    <script src="angular.js"></script>
+    <script src="ng-self-valid.js"></script>
+    <style type="text/css">
+
+        input.ng-invalid, select.ng-invalid {
+            background-color: #ee82ee !important;
+            border: 1px solid #CCC;
+        }
+
+        .qtip {
+            position: absolute;
+            max-width: 260px;
+            display: none;
+            min-width: 50px;
+            font-size: 10.5px;
+            line-height: 12px;
+            direction: ltr;
+        }
+
+        .qtip-content {
+            position: relative;
+            padding: 5px 9px;
+            overflow: hidden;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        .qtip-rounded, .qtip-tipsy {
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .qtipmodal-ie6fix {
+            position: absolute !important;
+        }
+
+        .box-shadow-tips {
+            background-color: #F63;
+            border-color: #F5A88F;
+            color: white;
+            -moz-box-shadow: 2px 2px 2px #969696;
+            -webkit-box-shaow: 2px 2px 2px #969696;
+            box-shadow: 2px 2px 2px #969696;
+        }
+    </style>
+
+</head>
+<body ng-app="myApp">
+<form name="baseInfoForm">
+    <div ng-controller="testCtrl">
+        <input type="text" ng-model="age" my-valid="r"><br>
+        <input type="text" ng-model="name" my-valid="int fn:certCheck"><br>
+        <input type="button" value="提交" ng-click="submit()">
+    </div>
+</form>
+</body>
+</html>
